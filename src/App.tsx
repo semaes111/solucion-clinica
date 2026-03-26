@@ -10,6 +10,8 @@ import Hero from './sections/Hero';
 import NarrativeText from './sections/NarrativeText';
 import StatsSection from './sections/StatsSection';
 import TrustSection from './sections/TrustSection';
+import ProblemSection from './sections/ProblemSection';
+import ProcessSection from './sections/ProcessSection';
 import PricingSection from './sections/PricingSection';
 import BreathSection from './sections/BreathSection';
 import ZigZagGrid from './sections/ZigZagGrid';
@@ -70,6 +72,12 @@ function App() {
 
         {/* Trust Badges */}
         <TrustSection />
+
+        {/* Problem vs Solution */}
+        <ProblemSection />
+
+        {/* Process Steps */}
+        <ProcessSection />
 
         {/* BREATH Video Mask Section */}
         <BreathSection />

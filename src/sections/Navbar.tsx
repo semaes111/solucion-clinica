@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
+  { label: 'Proceso', href: '#proceso' },
   { label: 'Servicios', href: '#servicios' },
   { label: 'Precios', href: '#precios' },
   { label: 'Contacto', href: 'mailto:info@solucionclinica.com' },

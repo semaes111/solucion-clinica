@@ -1,159 +1,113 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ArrowUpRight } from 'lucide-react';
 import { narrativeTextConfig } from '../config';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// 4-Point Star SVG Component
-const StarIcon = ({ className }: { className?: string }) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className={className}
-  >
-    <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
-  </svg>
-);
-
 const NarrativeText = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const line1Ref = useRef<HTMLParagraphElement>(null);
-  const line2Ref = useRef<HTMLParagraphElement>(null);
+  const labelRef = useRef<HTMLDivElement>(null);
+  const line1Ref = useRef<HTMLHeadingElement>(null);
   const line3Ref = useRef<HTMLParagraphElement>(null);
-  const starRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const section = sectionRef.current;
+    const label = labelRef.current;
     const line1 = line1Ref.current;
-    const line2 = line2Ref.current;
     const line3 = line3Ref.current;
-    const star = starRef.current;
+    const cta = ctaRef.current;
 
-    if (!section || !line1 || !line2 || !line3 || !star) return;
+    const elements = [label, line1, line3, cta].filter(Boolean) as HTMLElement[];
+    if (elements.length === 0) return;
 
-    // Set initial states
-    gsap.set([line1, line2, line3], { opacity: 0, y: 30 });
-    gsap.set(star, { opacity: 0, scale: 0.5 });
+    gsap.set(elements, { opacity: 0, y: 30 });
 
     const triggers: ScrollTrigger[] = [];
 
-    // Star animation
-    const starTrigger = ScrollTrigger.create({
-      trigger: star,
-      start: 'top 85%',
-      once: true,
-      onEnter: () => {
-        gsap.to(star, {
-          opacity: 1,
-          scale: 1,
-          duration: 0.8,
-          ease: 'back.out(1.7)',
-        });
-      },
+    elements.forEach((el, i) => {
+      triggers.push(
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 85%',
+          once: true,
+          onEnter: () => {
+            gsap.to(el, {
+              opacity: 1, y: 0, duration: 1, delay: i * 0.15, ease: 'power3.out',
+            });
+          },
+        })
+      );
     });
-    triggers.push(starTrigger);
 
-    // Line animations with stagger
-    const line1Trigger = ScrollTrigger.create({
-      trigger: line1,
-      start: 'top 80%',
-      once: true,
-      onEnter: () => {
-        gsap.to(line1, {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: 'power3.out',
-        });
-      },
-    });
-    triggers.push(line1Trigger);
-
-    const line2Trigger = ScrollTrigger.create({
-      trigger: line2,
-      start: 'top 80%',
-      once: true,
-      onEnter: () => {
-        gsap.to(line2, {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          delay: 0.15,
-          ease: 'power3.out',
-        });
-      },
-    });
-    triggers.push(line2Trigger);
-
-    const line3Trigger = ScrollTrigger.create({
-      trigger: line3,
-      start: 'top 80%',
-      once: true,
-      onEnter: () => {
-        gsap.to(line3, {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          delay: 0.3,
-          ease: 'power3.out',
-        });
-      },
-    });
-    triggers.push(line3Trigger);
-
-    return () => {
-      triggers.forEach(trigger => trigger.kill());
-    };
+    return () => { triggers.forEach(t => t.kill()); };
   }, []);
 
-  if (!narrativeTextConfig.line1 && !narrativeTextConfig.line2 && !narrativeTextConfig.line3) return null;
+  if (!narrativeTextConfig.line1 && !narrativeTextConfig.line3) return null;
 
   return (
     <section
       ref={sectionRef}
-      className="relative w-full py-32 md:py-48 lg:py-56 bg-kaleo-sand"
+      className="relative w-full py-24 md:py-32 lg:py-40 bg-kaleo-sand"
     >
-      <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
-        {/* Spinning Star */}
+      <div className="max-w-3xl mx-auto px-6 md:px-8">
+        {/* Label */}
         <div
-          ref={starRef}
-          className="flex justify-center mb-16"
+          ref={labelRef}
+          className="flex items-center gap-3 mb-8"
           style={{ willChange: 'transform, opacity' }}
         >
-          <StarIcon className="w-6 h-6 md:w-8 md:h-8 text-kaleo-terracotta spin-slow" />
+          <div className="w-8 h-px bg-kaleo-terracotta" />
+          <span className="font-body text-xs uppercase tracking-[0.2em] text-kaleo-terracotta">
+            Plataforma de análisis oncológico
+          </span>
         </div>
 
-        {/* Narrative Text */}
-        <div className="space-y-8 md:space-y-10">
-          <p
-            ref={line1Ref}
-            className="font-display text-headline text-kaleo-earth"
-            style={{ willChange: 'transform, opacity' }}
-          >
-            {narrativeTextConfig.line1}
-          </p>
+        {/* Main Title with italic+bold part */}
+        <h2
+          ref={line1Ref}
+          className="font-display text-headline text-kaleo-earth"
+          style={{ willChange: 'transform, opacity' }}
+        >
+          Cada informe médico esconde{' '}
+          <em className="font-semibold italic text-kaleo-terracotta">
+            opciones que merecen ser encontradas
+          </em>
+        </h2>
 
-          <p
-            ref={line2Ref}
-            className="font-display text-subheadline text-kaleo-earth/80 italic max-w-2xl mx-auto"
-            style={{ willChange: 'transform, opacity' }}
-          >
-            {narrativeTextConfig.line2}
-          </p>
+        {/* Description */}
+        <p
+          ref={line3Ref}
+          className="font-body text-sm md:text-base text-kaleo-earth/60 max-w-xl leading-relaxed mt-8"
+          style={{ willChange: 'transform, opacity' }}
+        >
+          {narrativeTextConfig.line3}
+        </p>
 
-          <p
-            ref={line3Ref}
-            className="font-body text-sm md:text-base text-kaleo-earth/60 max-w-lg mx-auto leading-relaxed tracking-wide"
-            style={{ willChange: 'transform, opacity' }}
+        {/* CTAs */}
+        <div
+          ref={ctaRef}
+          className="flex flex-wrap items-center gap-4 mt-10"
+          style={{ willChange: 'transform, opacity' }}
+        >
+          <a
+            href="https://app.solucionclinica.com"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-kaleo-terracotta text-kaleo-cream rounded-full font-body text-sm uppercase tracking-wider hover:bg-kaleo-earth transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            {narrativeTextConfig.line3}
-          </p>
-        </div>
-
-        {/* Bottom Star */}
-        <div className="flex justify-center mt-16">
-          <StarIcon className="w-4 h-4 text-kaleo-terracotta/50" />
+            Analizar mi caso
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
+          <a
+            href="#proceso"
+            className="font-body text-sm text-kaleo-earth/60 underline underline-offset-4 hover:text-kaleo-earth transition-colors"
+            onClick={(e) => {
+              e.preventDefault();
+              document.querySelector('#proceso')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            Ver cómo funciona
+          </a>
         </div>
       </div>
     </section>
