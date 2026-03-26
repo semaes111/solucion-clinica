@@ -64,7 +64,7 @@ export const zigZagGridConfig: ZigZagGridConfig = {
       id: "analisis-ia",
       title: "Análisis con Inteligencia Artificial",
       subtitle: "Tecnología de vanguardia",
-      description: "Sube tu informe en PDF. Nuestra IA extrae diagnósticos, líneas de tratamiento, valores analíticos, estadificación (Child-Pugh, ECOG, BCLC) y barreras de elegibilidad. Multi-modelo con redundancia: Claude + Gemini. Resultado en menos de 60 segundos.",
+      description: "Sube tu informe en PDF. Nuestra IA extrae diagnósticos, líneas de tratamiento, valores analíticos, estadificación (Child-Pugh, ECOG, BCLC) y barreras de elegibilidad. Multi-modelo con redundancia: Claude + Gemini. Resultado en menos de 5 minutos.",
       image: "/grid-1.jpg",
       imageAlt: "Análisis de informes médicos con IA",
       reverse: false,
@@ -113,7 +113,7 @@ export const breathSectionConfig: BreathSectionConfig = {
   backgroundAlt: "Laboratorio de investigación médica",
   title: "Tu caso merece toda la información disponible",
   subtitle: "Empieza hoy",
-  description: "Sube tu informe médico y elige el análisis que necesitas. Sin suscripciones, sin compromisos. Análisis completo en menos de 60 segundos, disponible 24/7.",
+  description: "Sube tu informe médico y elige el análisis que necesitas. Sin suscripciones, sin compromisos. Análisis completo en menos de 5 minutos, disponible 24/7.",
 };
 
 // Card Stack Section

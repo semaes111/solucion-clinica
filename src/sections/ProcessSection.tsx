@@ -13,7 +13,7 @@ const steps = [
   {
     number: '02',
     title: 'La IA analiza',
-    description: 'En menos de 60 segundos: diagnósticos, tratamientos, scores clínicos y barreras.',
+    description: 'En menos de 5 minutos: diagnósticos, tratamientos, scores clínicos y barreras.',
   },
   {
     number: '03',

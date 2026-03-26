@@ -18,7 +18,7 @@ const stats = [
   },
   {
     icon: Clock,
-    value: '< 60s',
+    value: '< 5min',
     label: 'Análisis completo',
   },
   {

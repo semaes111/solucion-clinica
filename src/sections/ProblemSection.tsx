@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const problems = [
   {
     without: { title: 'Informes incomprensibles.', desc: 'Estadificación, scores y valores que el paciente no puede interpretar solo.' },
-    with: { title: 'Análisis claro en 60 segundos.', desc: 'Diagnóstico, tratamientos, scores y barreras de elegibilidad, explicados.' },
+    with: { title: 'Análisis claro en menos de 5 minutos.', desc: 'Diagnóstico, tratamientos, scores y barreras de elegibilidad, explicados.' },
   },
   {
     without: { title: 'Ensayos imposibles de encontrar.', desc: 'Miles de estudios en registros distintos con criterios técnicos.' },
