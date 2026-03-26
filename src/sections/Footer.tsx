@@ -223,7 +223,7 @@ const Footer = ({ onLegalClick }: FooterProps) => {
           >
             <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
               <svg
-                viewBox="0 0 400 80"
+                viewBox="0 0 800 80"
                 className="w-full max-w-4xl mx-auto h-auto opacity-20"
                 fill="currentColor"
                 role="img"
@@ -236,7 +236,7 @@ const Footer = ({ onLegalClick }: FooterProps) => {
                   textAnchor="middle"
                   className="font-display"
                   style={{
-                    fontSize: '72px',
+                    fontSize: '56px',
                     fontFamily: 'Cormorant Garamond, serif',
                     letterSpacing: '0.05em'
                   }}
