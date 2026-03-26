@@ -8,8 +8,8 @@ gsap.registerPlugin(ScrollTrigger);
 const trustItems = [
   {
     icon: UserCheck,
-    title: 'Equipo médico cualificado',
-    description: 'Informes revisados por especialistas en oncología',
+    title: 'Equipo médico especializado',
+    description: 'Informes elaborados y revisados por equipo interdisciplinar',
   },
   {
     icon: ShieldCheck,

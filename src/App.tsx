@@ -10,7 +10,7 @@ import Hero from './sections/Hero';
 import NarrativeText from './sections/NarrativeText';
 import StatsSection from './sections/StatsSection';
 import TrustSection from './sections/TrustSection';
-import CardStack from './sections/CardStack';
+import PricingSection from './sections/PricingSection';
 import BreathSection from './sections/BreathSection';
 import ZigZagGrid from './sections/ZigZagGrid';
 import Footer from './sections/Footer';
@@ -71,11 +71,11 @@ function App() {
         {/* Trust Badges */}
         <TrustSection />
 
-        {/* Card Stack Parallax Gallery */}
-        <CardStack />
-
         {/* BREATH Video Mask Section */}
         <BreathSection />
+
+        {/* Pricing Section */}
+        <PricingSection />
 
         {/* Zig-Zag Grid Section */}
         <ZigZagGrid />
